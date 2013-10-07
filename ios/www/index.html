@@ -5,6 +5,7 @@
 <meta content="IE=edge,chrome=IE9" http-equiv="X-UA-Compatible"/>
 <meta name="description" content="收錄十六萬筆國語、一萬六千筆臺語條目，每個字詞都可以輕按連到說明，並提供 Android 及 iOS 離線版。來源為教育部「重編國語辭典（修訂本）」及「臺灣閩南語常用詞辭典」，辭典本文的著作權仍為教育部所有。">
 <link rel="apple-touch-icon" href="icon.png" />
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <link href="styles.css" rel="stylesheet"></link>
 <link href="css/cupertino/jquery-ui-1.10.2.custom.css" rel="stylesheet"></link>
 <!--[if !IE]>-->
@@ -22,8 +23,10 @@
 </head>
 <body id="moedict" class="main" onhashchange="grokHash()">
     <div class="nav-bg navbar-fixed-top"></div>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
             <a class="navbar-brand brand ebas" href="./">萌典</a>
+        </div>
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -35,15 +38,27 @@
                         <li role="presentation">
                           <a role="menuitem" class="lang-option a" href="#萌">國語辭典</a>
                         </li>
-                        <li><a class="lang-option a a-idiom icon-long-arrow-right" href="#，">諺語</a></li>
+                        <li class="dropdown-submenu">
+                            <a class="a taxonomy" href="#">…分類索引</a>
+                        </li>
+                        <li role="presentation">
+                            <a class="lang-option a a-idiom" href="#@">…部首表</a>
+                        </li>
                         <li role="presentation">
                           <a role="menuitem" class="lang-option t" href="#!">臺灣閩南語</a>
                         </li>
-                        <li><a class="lang-option t t-idiom icon-long-arrow-right" href="#!。">諺語</a></li>
+                        <li class="dropdown-submenu">
+                            <a class="t taxonomy" href="#">…分類索引</a>
+                        </li>
+                        <li role="presentation">
+                            <a class="lang-option t t-idiom" href="#!=諺語">…諺語</a>
+                        </li>
                         <li role="presentation">
                           <a role="menuitem" class="lang-option h" href="#:">臺灣客家語</a>
                         </li>
-                        <li><a class="lang-option h h-idiom icon-long-arrow-right" href="#:，">諺語</a></li>
+                        <li role="presentation">
+                            <a class="lang-option h h-idiom" href="#:=諺語">…諺語</a>
+                        </li>
                     </ul>
                 </li>
 <!--[if !IE]>-->
@@ -58,34 +73,20 @@
 </form>
 </li>
 <!--<![endif]-->
-<li class="cordova-only">
+<li class="cordova-only" style="position: absolute; top: 2px; left: 8em; padding: 3px">
 <a style="padding-left: 5px; padding-right: 5px" href="#" onclick="adjustFontSize(-1); return false"><i class="icon-resize-small"></i></a>
 </li>
-<li class="cordova-only">
+<li class="cordova-only" style="position: absolute; top: 2px; left: 8em; padding: 3px; margin-left: 30px;">
 <a style="padding-left: 5px; padding-right: 5px" href="#" onclick="adjustFontSize(1); return false"><i class="icon-resize-full"></i></a>
 </li>
             </ul>
-            <ul class="nav pull-right">
+            <ul class="nav pull-right hidden-xs">
                 <li>
                     <a href="#" onclick="pressAbout(); return false" title="關於本站"><span class="ebas iconic-circle">告</span></a>
                 </li>
             </ul>
-        </div>
-    </div>
-    <div class="results">
-        <div id="strokes" style="clear: both; display: block; display: none"></div>
-        <div id="result" class="result">
-            <center style="font-size: 30px; margin-top: 40px; margin-bottom: 40px">
-                <span id="loading">
-                </span>
-                <br /><br />
-                <img class="logo" title="〔萌典〕" src="images/icon.png" width="100">
-                <br /><br />
-                <span id="F9868" style="font-family: 'MOEDICT'; margin-botom: 40px">
-                </span>
-            </center>
-        </div>
-    </div>
+    </nav>
+    <div class="results"><div id="strokes" style="display: none"></div><div id="result" class="result"><center style="font-size: 30px; margin-top: 40px; margin-bottom: 40px"><span id="loading"></span><br /><br /><img class="logo" title="〔萌典〕" src="images/icon.png" width="100"><br /><br /><span id="F9868" style="font-family: 'MOEDICT'; margin-botom: 40px"></span></center></div></div>
     <div id="query-box" class="query-box">
         <input id="query" type="search" class="query" style="display: none" autofocus autocomplete="off" placeholder="請輸入欲查詢的字詞" />
     </div>
