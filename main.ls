@@ -243,6 +243,7 @@ window.do-load = ->
       fill-query MOE-ID
       $ \#query .val ''
     else if location.hash isnt /^#./
+      fill-query MOE-ID
       fetch MOE-ID
 
   window.grok-val = grok-val = (val) ->
